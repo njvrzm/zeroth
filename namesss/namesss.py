@@ -23,7 +23,7 @@ def getNamesForYear(year:int, count:int = 1000, meta:str = None):
     columns = [th.text for th in header.findAll('th')]
 
     data = []
-    for tr in header.findNextSiblings('tr'):
+    for tr in header.findNextSiblings('tr')[:-1]:
         data.append(dict(zip(columns, [td.text for td in tr.findAll('td')])))
     return data
 
