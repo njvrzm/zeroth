@@ -1,0 +1,1 @@
+from .namesss import getNamesForYear
