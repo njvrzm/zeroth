@@ -8,7 +8,7 @@ session = requests.Session()
 def getNamesForYear(year:int, count:int = 1000, meta:str = None) -> List[dict]:
     """ Downloads the Social Security top N names for the given year.
 
-    :param year: A value from 1880 to (currently) 2016.
+    :param year: A value from 1880 through (as of 2018-01-14) 2016.
     :param count: How many names to return; max is 1000.
     :param meta: if 'n', include the number of children given each name;
                  if 'p', include the percentage. if None or absent,
@@ -28,6 +28,7 @@ def getNamesForYear(year:int, count:int = 1000, meta:str = None) -> List[dict]:
     columns = [th.text for th in header.findAll('th')]
     # The last row is a non-data footer
     rows = header.findNextSiblings('tr')[:-1]
+
     def getData(row):
         return dict(zip(columns, [td.text for td in row.findAll('td')]))
 
